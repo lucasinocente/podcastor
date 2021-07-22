@@ -1,8 +1,29 @@
 import Head from 'next/head'
+import { gql, useQuery } from '@apollo/client';
 import Link from 'next/link';
 import styles from '../styles/Home.module.css'
 
-export default function Home({ slug, rss }) {
+const GET_PODCAST = gql`
+  query Country($code: ID!) {
+    country(code: $code) {
+      code
+      name
+    }
+  }
+`;
+
+export default function Home({ slug }) {
+  const { loading, error, data } = useQuery(GET_PODCAST, {
+    variables: {
+      code: 'AD'
+    }
+  });
+
+  if (loading) return 'Loading...';
+  if (error) return `Error! ${error.message}`;
+
+  console.log(data)
+
   return (
     <div className={styles.container}>
       <Head>
@@ -17,13 +38,14 @@ export default function Home({ slug, rss }) {
         </h1>
 
         <form className={styles.card}>
-          RSS: { rss }
+          RSS: { data.country.name }
         </form>
       </main>
       <footer className={styles.footer}>
         <Link href="/">
           <a>
-            Powered by{' '}           <strong>Podcastor 🦫</strong>
+            Powered by{' '}
+            <strong>Podcastor 🦫</strong>
           </a>
         </Link>
       </footer>
@@ -31,9 +53,6 @@ export default function Home({ slug, rss }) {
   )
 }
 
-
 export async function getServerSideProps({ params: { slug } }) {
-  const rss = 'Rss Link';
-
-  return { props: { slug, rss } }
+  return { props: { slug } }
 }
