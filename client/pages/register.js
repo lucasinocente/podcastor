@@ -1,12 +1,13 @@
 import { useState } from 'react'
-import Head from 'next/head'
 import { useRouter } from 'next/router'
+import RegisterForm from '../components/RegisterForm'
+import Title from '../components/Title'
 import Podcast from '../lib/Podcast'
-import styles from '../styles/Home.module.css'
+import Footer from '../components/Footer'
 
 const podcast = new Podcast();
 
-export default function Home() {
+const Register = () => {
   const router = useRouter()
   const [slug, setSlug] = useState();
   const [rss, setRss] = useState();
@@ -29,47 +30,16 @@ export default function Home() {
   }
 
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>🦫 Podcastor</title>
-        <meta name="description" content="A place for podcast creator" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Registor 🦫
-        </h1>
-
-        <form className={styles.card} onSubmit={handleSubmit}>
-          <h2>Create your Podcastor Page</h2>
-          <div>
-            <label htmlFor="slug">Choice your slug name:</label>
-            <input
-              onChange={(event) => setSlug(event.target.value)}
-              className={styles.input}
-              type="text"
-              name="slug"
-              id="slug"
-              placeholder="podcastor.me/slug"
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="feed">Paste your RSS feed:</label>
-            <input
-              onChange={(event) => setRss(event.target.value)}
-              className={styles.input}
-              type="text"
-              name="feed"
-              id="feed"
-              placeholder="https://anchor.fm/s/xpto/podcast/rss"
-              required
-            />
-          </div>
-          <input className={styles.button} type="submit" value="Register" />
-        </form>
-      </main>
-    </div>
+    <>
+      <Title text="Registor 🦫" />
+      <RegisterForm
+        handleSubmit={handleSubmit}
+        setRss={setRss}
+        setSlug={setSlug}
+      />
+      <Footer />
+    </>
   )
 }
+
+export default Register;

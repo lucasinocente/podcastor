@@ -1,9 +1,10 @@
+import Page from '../components/Page'
 import '../styles/globals.css'
 
-function MyApp({ Component, pageProps }) {
-  return (
+const App = ({ Component, pageProps }) => (
+  <Page>
     <Component {...pageProps} />
-  )
-}
+  </Page>
+)
 
-export default MyApp
+export default App;
