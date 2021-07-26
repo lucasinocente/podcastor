@@ -1,42 +1,31 @@
 import { useState } from 'react'
 import Head from 'next/head'
-import { gql, useMutation } from '@apollo/client';
 import { useRouter } from 'next/router'
+import Podcast from '../lib/Podcast'
 import styles from '../styles/Home.module.css'
 
-const REGISTER_PODCAST = gql`
-  mutation RegisterPodcast($type: String!) {
-    registerPodcats(type: $type) {
-      slug
-      rss
-    }
-  }
-`;
+const podcast = new Podcast();
 
 export default function Home() {
   const router = useRouter()
   const [slug, setSlug] = useState();
   const [rss, setRss] = useState();
-  const [registerPodcats, { data }] = useMutation(REGISTER_PODCAST);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
 
-    console.log('slug', slug);
-    console.log('rss', rss);
+    try {
+      await podcast.register({
+        rss,
+        slug,
+      })
 
-    // registerPodcats(
-    //   {
-    //     variables:{
-    //       slug,
-    //       rss
-    //     }
-    //   }
-    // );
+      alert('Success')
 
-    alert('Success')
-
-    router.push(event.target[0].value)
+      router.push(event.target[0].value)
+    } catch (error) {
+      alert(error)
+    }
   }
 
   return (

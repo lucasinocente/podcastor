@@ -1,29 +1,11 @@
-import Head from 'next/head'
-import { gql, useQuery } from '@apollo/client';
+import Head from 'next/head';
 import Link from 'next/link';
-import styles from '../styles/Home.module.css'
+import styles from '../styles/Home.module.css';
+import Podcast from '../lib/Podcast';
 
-const GET_PODCAST = gql`
-  query Country($code: ID!) {
-    country(code: $code) {
-      code
-      name
-    }
-  }
-`;
+const podcast = new Podcast();
 
-export default function Home({ slug }) {
-  const { loading, error, data } = useQuery(GET_PODCAST, {
-    variables: {
-      code: 'AD'
-    }
-  });
-
-  if (loading) return 'Loading...';
-  if (error) return `Error! ${error.message}`;
-
-  console.log(data)
-
+export default function PodcastPage({ slug, rss }) {
   return (
     <div className={styles.container}>
       <Head>
@@ -37,9 +19,9 @@ export default function Home({ slug }) {
           { slug }
         </h1>
 
-        <form className={styles.card}>
-          RSS: { data.country.name }
-        </form>
+        <div className={styles.card}>
+          RSS: { rss }
+        </div>
       </main>
       <footer className={styles.footer}>
         <Link href="/">
@@ -54,5 +36,8 @@ export default function Home({ slug }) {
 }
 
 export async function getServerSideProps({ params: { slug } }) {
-  return { props: { slug } }
+  const response = await podcast.getBySlug('AD');
+  console.log(JSON.stringify({ response }))
+
+  return { props: { slug, rss: response.data.country.name } }
 }
