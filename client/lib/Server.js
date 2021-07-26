@@ -77,6 +77,12 @@ class Server {
       throw error;
     }
   }
+
+  loadRss = async rss => {
+    const response = await fetch(rss);
+    const text = response.text();
+    return text;
+  }
 }
 
 export default Server;

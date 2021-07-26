@@ -18,8 +18,10 @@ export default function PodcastPage({ slug, rss }) {
 }
 
 export async function getServerSideProps({ params: { slug } }) {
-  const response = await podcast.getBySlug('AD');
-  console.log(JSON.stringify({ response }))
+  const { response: { data }, getJsonRss } = await podcast.getBySlug('AD');
+  const json = await getJsonRss();
 
-  return { props: { slug, rss: response.data.country.name } }
+  console.log(json)
+
+  return { props: { slug, rss: data.country.name } }
 }
