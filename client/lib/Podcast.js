@@ -12,9 +12,10 @@ class Podcast {
 
   getJsonRss = async () => {
     const rss = await server.loadRss(this.rss);
-    const json = xml2json(rss);
-    this.json = json;
-    return json
+    const json = xml2json(rss, { compact: true });
+    const parsed = JSON.parse(json);
+    this.json = parsed.rss.channel;
+    return this.json
   }
 
   getBySlug = async slug => {
