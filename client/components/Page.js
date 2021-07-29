@@ -3,7 +3,9 @@ import Head from './Head';
 const Page = ({ children }) => (
   <>
     <Head />
-    { children }
+    <div className="container">
+      { children }
+    </div>
   </>
 )
 

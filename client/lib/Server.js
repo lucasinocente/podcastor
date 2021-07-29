@@ -1,13 +1,12 @@
 import fetch from 'isomorphic-fetch';
 
-// const urlServer = 'https://countries.trevorblades.com'
-const urlServer = 'http://localhost:8080'
+const urlServer = 'https://countries.trevorblades.com'
 
-const GET_USER_BY_ID = `
-  query getUser {
-    user_by_pk(id: 1) {
+const GET_COUNTRIES_BY_CODE = `
+  query Country($code: ID!) {
+    country(code: $code) {
+      code
       name
-      email
     }
   }
 `
@@ -30,7 +29,6 @@ class Server {
     const headers = {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
-      'x-hasura-admin-secret': 'abc123'
     }
 
     const response = await fetch(urlServer, {
@@ -49,7 +47,7 @@ class Server {
 
   getPodcastBySlug = async slug => {
     try {
-      const query = GET_USER_BY_ID;
+      const query = GET_COUNTRIES_BY_CODE;
       const variables = { code: slug }
       const response = await this.fetchServer({
         query,
