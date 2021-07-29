@@ -19,3 +19,24 @@ Lembrando que os comandos do Hasura CLI devem ser executados dentro da pasta has
 ```
 hasura migrate create <nome_da_migration> --from-server
 ```
+
+## Como aplicar uma migration
+
+1 - Acesse a pasta hasura-server pelo terminal
+
+2 - Execute o comando:
+
+```
+hasura migrate apply
+```
+
+## Como exportar metadata
+
+
+1 - Acesse a pasta hasura-server pelo terminal
+
+2 - Execute o comando:
+
+```
+hasura metadata export
+```
