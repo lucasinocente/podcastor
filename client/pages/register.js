@@ -1,45 +1,44 @@
-import { useState } from 'react'
-import { useRouter } from 'next/router'
-import RegisterForm from '../components/RegisterForm'
-import Title from '../components/Title'
-import Podcast from '../lib/Podcast'
-import Footer from '../components/Footer'
+import Head from 'next/head'
+import { Router, useRouter } from 'next/router'
+import styles from '../styles/Home.module.css'
 
-const podcast = new Podcast();
-
-const Register = () => {
+export default function Home() {
   const router = useRouter()
-  const [slug, setSlug] = useState();
-  const [rss, setRss] = useState();
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault()
 
-    try {
-      await podcast.register({
-        rss,
-        slug,
-      })
+    alert('Success')
 
-      alert('Success')
-
-      router.push(event.target[0].value)
-    } catch (error) {
-      alert(error)
-    }
+    router.push(event.target[0].value)
   }
 
   return (
-    <>
-      <Title text="Registor 🦫" />
-      <RegisterForm
-        handleSubmit={handleSubmit}
-        setRss={setRss}
-        setSlug={setSlug}
-      />
-      <Footer />
-    </>
+    <div className={styles.container}>
+      <Head>
+        <title>🦫 Podcastor</title>
+        <meta name="description" content="A place for podcast creator" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
+      <main className={styles.main}>
+        <h1 className={styles.title}>
+          Registor 🦫
+        </h1>
+
+        <form className={styles.card} onSubmit={handleSubmit}>
+          <h2>Create your Podcastor Page</h2>
+          <div>
+            <label htmlFor="slug">Choice your slug name:</label>
+            <input className={styles.input} type="text" name="slug" id="slug" placeholder="podcastor.me/slug" required />
+          </div>
+          <div>
+            <label htmlFor="feed">Paste your RSS feed:</label>
+            <input className={styles.input} type="text" name="feed" id="feed" placeholder="https://anchor.fm/s/xpto/podcast/rss" required />
+          </div>
+          <input className={styles.button} type="submit" value="Register" />
+        </form>
+      </main>
+    </div>
   )
 }
-
-export default Register;

@@ -14,38 +14,26 @@ a {
 * {
   box-sizing: border-box;
 }
-<<<<<<< HEAD
-=======
-
-.navbar {
-  background: #222;
-  width: 100%;
-  padding: 21px;
-  margin-bottom: 21px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.navbar > div {
-  padding: 8px;
-}
-
-.navbar a {
-  color: white;
-}
-
-.nav {
-  display: flex;
-  align-items: center;
-}
 
 .container {
+  min-height: 100vh;
   padding: 0 0.5rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 100vh;
+}
+
+.main {
+  padding: 5rem 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 610px;
 }
 
 .footer {
@@ -56,7 +44,6 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 auto;
 }
 
 .footer a {
@@ -165,4 +152,3 @@ a {
     flex-direction: column;
   }
 }
->>>>>>> 83b0c253f7510849149774e812c25257f99c0b96
