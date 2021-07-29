@@ -48,5 +48,7 @@ export async function getServerSideProps({ params: { slug } }) {
   } = await podcast.getBySlug('AD');
   const json = await getJsonRss();
 
+  console.log('------------------------------------------', data);
+
   return { props: { slug, json } }
 }

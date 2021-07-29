@@ -1,12 +1,12 @@
 import fetch from 'isomorphic-fetch';
 
-const urlServer = 'https://countries.trevorblades.com'
+const urlServer = 'http://localhost:8080/v1/graphql'
 
-const GET_COUNTRIES_BY_CODE = `
-  query Country($code: ID!) {
-    country(code: $code) {
-      code
+const GET_USER_BY_ID = `
+  query getUser($id: Int!) {
+    user_by_pk(id: $id) {
       name
+      email
     }
   }
 `
@@ -29,6 +29,7 @@ class Server {
     const headers = {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
+      ' ': 'abc123',
     }
 
     const response = await fetch(urlServer, {
@@ -47,8 +48,8 @@ class Server {
 
   getPodcastBySlug = async slug => {
     try {
-      const query = GET_COUNTRIES_BY_CODE;
-      const variables = { code: slug }
+      const query = GET_USER_BY_ID;
+      const variables = { id: 1 }
       const response = await this.fetchServer({
         query,
         variables,

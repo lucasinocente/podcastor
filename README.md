@@ -10,6 +10,8 @@ npm install -g hasura
 
 Lembrando que os comandos do Hasura CLI devem ser executados dentro da pasta hasura-server
 
+# Migration
+
 ## Como criar uma migration
 
 1 - Acesse a pasta hasura-server pelo terminal
@@ -30,8 +32,9 @@ hasura migrate create <nome_da_migration> --from-server
 hasura migrate apply
 ```
 
-## Como exportar metadata
+# Metadata
 
+## Como exportar metadata
 
 1 - Acesse a pasta hasura-server pelo terminal
 
