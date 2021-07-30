@@ -32,6 +32,12 @@ hasura migrate create <nome_da_migration> --from-server
 hasura migrate apply
 ```
 
+3 - Para validar o status da migration basta executar:
+
+```
+hasura migrate status
+```
+
 # Metadata
 
 ## Como exportar metadata

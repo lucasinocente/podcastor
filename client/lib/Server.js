@@ -29,7 +29,7 @@ class Server {
     const headers = {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
-      ' ': 'abc123',
+      'x-hasura-admin-secret': 'abc123',
     }
 
     const response = await fetch(urlServer, {
