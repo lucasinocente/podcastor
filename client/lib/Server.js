@@ -3,10 +3,12 @@ import fetch from 'isomorphic-fetch';
 const urlServer = 'http://localhost:8080/v1/graphql'
 
 const GET_USER_BY_ID = `
-  query getUser($id: Int!) {
-    user_by_pk(id: $id) {
+  query getUsers {
+    user {
+      id
       name
       email
+      rss
     }
   }
 `
@@ -49,10 +51,10 @@ class Server {
   getPodcastBySlug = async slug => {
     try {
       const query = GET_USER_BY_ID;
-      const variables = { id: 1 }
+      // const variables = {}
       const response = await this.fetchServer({
         query,
-        variables,
+        // variables,
       });
 
       return response;
