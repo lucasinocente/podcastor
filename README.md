@@ -81,3 +81,34 @@ Execute o comando:
 ```
 hasura metadata apply
 ```
+
+# Seed
+
+## Como criar um seed de uma tabela
+
+Para apenas uma tabela, execute o comando:
+
+```
+hasura seed create <nome_do_seed> --from-table <nome_da_tabela_1>
+```
+
+Para várias tabelas:
+
+```
+hasura seed create <nome_do_seed> --from-table <nome_da_tabela_1> --from-table <nome_da_tabela_2>
+```
+
+## Como aplicar um seed
+
+Para aplicar todos os seed na base de dados, execute o comando:
+
+```
+hasura seed apply
+
+```
+
+Para aplicar apenas um específico, execute o comando:
+
+```
+hasura seed apply --file seeds/<nome_do_arquivo_sql_do_seed>.sql
+```
