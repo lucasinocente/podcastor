@@ -14,11 +14,11 @@ const GET_USER_BY_ID = `
 `
 
 const REGISTER_PODCAST = `
-  mutation registerPodcast(
-    $user_insert_input: user_insert_input!
+  mutation newPodcast(
+    $podcast: newPodcastInput!
   ) {
-    insert_user_one(object: $user_insert_input) {
-      id,
+    newPodcast(podcast: $podcast) {
+      status
     }
   }
 `;
@@ -73,12 +73,10 @@ class Server {
     try {
       const query = REGISTER_PODCAST;
       const variables = {
-        user_insert_input: {
-          email: email,
-          name: name,
+        podcast: {
           rss: rss,
           slug: slug,
-        }
+        },
       }
       const response = await this.fetchServer({
         query,

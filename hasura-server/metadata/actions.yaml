@@ -1,6 +1,12 @@
-actions: []
+actions:
+- name: newPodcast
+  definition:
+    kind: synchronous
+    handler: http://localhost:3000/api/podcast/new
 custom_types:
   enums: []
-  input_objects: []
-  objects: []
+  input_objects:
+  - name: newPodcastInput
+  objects:
+  - name: newPodcastOutput
   scalars: []

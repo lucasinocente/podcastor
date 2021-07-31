@@ -1,0 +1,15 @@
+type Mutation {
+  newPodcast (
+    podcast: newPodcastInput!
+  ): newPodcastOutput
+}
+
+input newPodcastInput {
+  slug : String!
+  rss : String!
+}
+
+type newPodcastOutput {
+  status : String!
+}
+
