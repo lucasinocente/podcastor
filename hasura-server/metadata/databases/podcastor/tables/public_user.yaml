@@ -6,10 +6,16 @@ insert_permissions:
     backend_only: false
     check: {}
     columns:
-    - id
-    - name
-  role: owner
+    - rss
+    - slug
+  role: anonymous
 select_permissions:
+- permission:
+    columns:
+    - rss
+    - slug
+    filter: {}
+  role: anonymous
 - permission:
     columns:
     - id
@@ -20,6 +26,7 @@ update_permissions:
 - permission:
     check: {}
     columns:
-    - name
+    - rss
+    - slug
     filter: {}
   role: owner
