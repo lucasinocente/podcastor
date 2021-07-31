@@ -11,8 +11,6 @@ export default function PodcastPage({ slug, json }) {
   const description = json.description._cdata;
   const episodes = json.item;
 
-  console.log(episodes)
-
   return (
     <>
       <Title text={title} />

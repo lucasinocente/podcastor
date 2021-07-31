@@ -5,10 +5,10 @@
 Para instalar o CLI do Hasura basta executar o comando:
 
 ```
-npm install -g hasura
+npm install -g hasura-cli
 ```
 
-Lembrando que os comandos do Hasura CLI devem ser executados dentro da pasta hasura-server
+**Lembrando que os comandos do Hasura CLI devem ser executados dentro da pasta hasura-server.**
 
 OBS: se estiver rodando o console do hasura a partir da CLI pelo comando `hasura console`, é importante lembrar de desabilitar a variável
 `HASURA_GRAPHQL_ENABLE_CONSOLE`. Para isso basta colocar o valor como `false` no arquivo `docker-compose.yml` na raiz do projeto.
