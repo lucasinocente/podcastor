@@ -11,19 +11,29 @@ const Register = () => {
   const router = useRouter()
   const [slug, setSlug] = useState();
   const [rss, setRss] = useState();
+  const [email, setEmail] = useState();
+  const [name, setName] = useState();
 
   const handleSubmit = async (event) => {
     event.preventDefault()
 
     try {
-      await podcast.register({
+      const {
+        errors,
+      } = await podcast.register({
         rss,
         slug,
+        email,
+        name,
       })
 
-      alert('Success')
+      if(errors) {
+        throw new Error(errors)
+      }
 
-      router.push(event.target[0].value)
+      alert('Sucesso!');
+
+      router.push(slug)
     } catch (error) {
       alert(error)
     }
@@ -36,6 +46,8 @@ const Register = () => {
         handleSubmit={handleSubmit}
         setRss={setRss}
         setSlug={setSlug}
+        setEmail={setEmail}
+        setName={setName}
       />
       <Footer />
     </>

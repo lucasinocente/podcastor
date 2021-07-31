@@ -2,6 +2,8 @@ const RegisterForm = ({
   handleSubmit,
   setSlug,
   setRss,
+  setEmail,
+  setName,
 }) => (
   <form className="card" onSubmit={handleSubmit}>
     <h2>Create your Podcastor Page</h2>
@@ -26,6 +28,30 @@ const RegisterForm = ({
         name="feed"
         id="feed"
         placeholder="https://anchor.fm/s/xpto/podcast/rss"
+        required
+      />
+    </div>
+    <div>
+      <label htmlFor="name">Name:</label>
+      <input
+        onChange={(event) => setName(event.target.value)}
+        className="input"
+        type="text"
+        name="name"
+        id="name"
+        placeholder="João Fazedor"
+        required
+      />
+    </div>
+    <div>
+      <label htmlFor="email">Email:</label>
+      <input
+        onChange={(event) => setEmail(event.target.value)}
+        className="input"
+        type="text"
+        name="email"
+        id="email"
+        placeholder="email@email.com"
         required
       />
     </div>

@@ -14,10 +14,11 @@ const GET_USER_BY_ID = `
 `
 
 const REGISTER_PODCAST = `
-  mutation RegisterPodcast($type: String!) {
-    registerPodcats(type: $type) {
-      slug
-      rss
+  mutation registerPodcast(
+    $user_insert_input: user_insert_input!
+  ) {
+    insert_user_one(object: $user_insert_input) {
+      id,
     }
   }
 `;
@@ -65,11 +66,20 @@ class Server {
 
   registerPodcast = async ({
     slug,
-    rss
+    rss,
+    email,
+    name,
   }) => {
     try {
       const query = REGISTER_PODCAST;
-      const variables = { slug, rss }
+      const variables = {
+        user_insert_input: {
+          email: email,
+          name: name,
+          rss: rss,
+          slug: slug,
+        }
+      }
       const response = await this.fetchServer({
         query,
         variables,

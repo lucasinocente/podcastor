@@ -26,11 +26,15 @@ class Podcast {
 
   register = async ({
     slug,
-    rss
+    rss,
+    email,
+    name,
   }) => {
     return server.registerPodcast({
       slug,
-      rss
+      rss,
+      email,
+      name,
     });
   }
 }
