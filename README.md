@@ -10,6 +10,9 @@ npm install -g hasura
 
 Lembrando que os comandos do Hasura CLI devem ser executados dentro da pasta hasura-server
 
+OBS: se estiver rodando o console do hasura a partir da CLI pelo comando `hasura console`, é importante lembrar de desabilitar a variável
+`HASURA_GRAPHQL_ENABLE_CONSOLE`. Para isso basta colocar o valor como `false` no arquivo `docker-compose.yml` na raiz do projeto.
+
 # Migration
 
 Caso seja interessante usar o console do Hasura e ter todas as modificações sempre atualizadas nas migrations, basta acessar usando o comando:
@@ -104,7 +107,6 @@ Para aplicar todos os seed na base de dados, execute o comando:
 
 ```
 hasura seed apply
-
 ```
 
 Para aplicar apenas um específico, execute o comando:
