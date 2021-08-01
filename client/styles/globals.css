@@ -57,6 +57,14 @@ a {
   background: #22272e;
 }
 
+.btn-lg {
+  font-size: 1.3rem;
+}
+
+.btn-full {
+  width: 100%;
+}
+
 .container {
   max-width: 987px;
   margin: 0 auto;
@@ -87,11 +95,14 @@ a {
 .title {
   margin: 2.1rem;
   font-size: 3.4rem;
+  text-align: center;
 }
 
-.title,
-.description {
+.subtitle {
+  margin: 1.3rem;
+  font-size: 2.1rem;
   text-align: center;
+  font-weight: normal;
 }
 
 .title a {
@@ -130,7 +141,7 @@ a {
 
 .card {
   margin: 2.1rem;
-  padding: 21px;
+  padding: 2.1rem;
   text-align: left;
   color: inherit;
   text-decoration: none;
@@ -140,11 +151,29 @@ a {
   color: #fff;
 }
 
+.input-container {
+  font-size: 1.3rem;
+  margin: 0.8rem 0;
+}
+
+.input-container label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
 .input {
-  margin-bottom: 21px;
+  font-size: 1.3rem;
   width: 100%;
-  padding: 5px;
+  padding: 0.8rem;
   border-radius: 5px;
+  background: #22272e;
+  border: 1px solid rgb(83, 83, 83);
+  color: #ddd;
+}
+
+.spacer {
+  margin: 1.3rem 0;
+  border: 1px solid rgb(83, 83, 83);
 }
 
 .card h2 {
