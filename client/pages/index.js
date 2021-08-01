@@ -1,10 +1,14 @@
+import Header from '../components/Header'
 import Title from '../components/Title'
 import CardHome from '../components/CardHome'
 
 const Home = () =>  (
   <>
-    <Title text="Welcome to Podcastor 🦫" />
-    <CardHome />
+    <Header title="Podcastor 🦫" />
+    <div className="container">
+      <Title text="Gererate a website for your podcast with a simple RSS link" />
+      <CardHome />
+    </div>
   </>
 )
 

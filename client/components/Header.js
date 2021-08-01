@@ -1,16 +1,27 @@
 import Link from "next/link"
+import Button from './Button'
 
 const Header = ({ title, image }) => (
   <div className="navbar">
-    <div>
-      <img src={image} height="55" />
-    </div>
-    <div>
-      <Link href="/">
-        <a>
-          {title}
-        </a>
-      </Link>
+    <div className="container">
+      <div className="navbar-container">
+        <Link href="/">
+          <a className="navbar-title">
+            <strong>
+              {title}
+            </strong>
+          </a>
+        </Link>
+        <div className="navbar-right">
+          <Link href="/signup">
+            <a>
+              <Button>
+                Sign Up
+              </Button>
+            </a>
+          </Link>
+        </div>
+      </div>
     </div>
   </div>
 )

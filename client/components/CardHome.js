@@ -3,10 +3,10 @@ import Card from './Card'
 
 const CardHome = () => (
   <Card>
-    <Link href="/register">
+    <Link href="/signup">
       <a>
-        <h2>Register &rarr;</h2>
-        <p>Create your free account and generate your own website.</p>
+        <h2>Sign Up &rarr;</h2>
+        <p>Create your free account and generate your own podcast website.</p>
       </a>
     </Link>
   </Card>
