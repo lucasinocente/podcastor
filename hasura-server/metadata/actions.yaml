@@ -2,7 +2,7 @@ actions:
 - name: newPodcast
   definition:
     kind: synchronous
-    handler: http://localhost:3000/api/podcast/new
+    handler: http://host.docker.internal:3000/api/podcast/new
 custom_types:
   enums: []
   input_objects:

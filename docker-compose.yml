@@ -21,5 +21,13 @@ services:
       HASURA_GRAPHQL_DEV_MODE: "true"
       HASURA_GRAPHQL_ENABLED_LOG_TYPES: startup, http-log, webhook-log, websocket-log, query-log
       HASURA_GRAPHQL_ADMIN_SECRET: abc123
+  client:
+    image: node:12.18.4-alpine3.10
+    volumes:
+      - .:/usr/src/service
+    working_dir: /usr/src/service/client
+    command: npm run dev
+    ports:
+      - "3000:3000"
 volumes:
   db_data:
