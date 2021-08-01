@@ -6,7 +6,12 @@ const Header = ({ title, image }) => (
     <div className="container">
       <div className="navbar-container">
         <Link href="/">
-          <a className="navbar-title">
+          <a className={`navbar-title ${image ? 'navbar-with-image' : ''}`}>
+            {image && (
+              <div className="navbar-image">
+                <img src={image} height="89" />
+              </div>
+            )}
             <strong>
               {title}
             </strong>

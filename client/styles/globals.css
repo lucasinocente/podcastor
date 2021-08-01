@@ -8,6 +8,10 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+body {
+  padding-top: 77px;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -22,12 +26,16 @@ a {
   width: 100%;
   margin-bottom: 2.1rem;
   padding: 0.8rem 2.1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 .navbar-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 }
 
 .navbar-right {
@@ -42,6 +50,21 @@ a {
 .navbar-title {
   font-weight: bold;
   font-size: 21px;
+}
+
+.navbar-with-image {
+  padding-left: 129px;
+}
+
+.navbar-image {
+  position: absolute;
+  left: 0px;
+  top: -11px;
+  border: 13px solid #2d333b;
+}
+
+.navbar-image img {
+  display: block;
 }
 
 .btn {
