@@ -70,21 +70,11 @@ export default function PodcastPage({ slug, json }) {
 
 export async function getServerSideProps({ params: { slug } }) {
   try {
-    const {
-      response: {
-        data,
-        errors,
-      },
-      getJsonRss
-    } = await podcast.getBySlug(slug);
-    // const json = await getJsonRss();
-
-    console.log('------------------------------------------', data);
-    console.log('------------------------------------------', errors);
+    const { getJsonRss } = await podcast.getBySlug(slug);
+    const json = await getJsonRss();
 
     return { props: { slug, json } }
   } catch (error) {
-    console.log(error)
     return {
       notFound: true,
     }

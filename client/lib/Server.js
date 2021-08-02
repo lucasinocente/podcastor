@@ -13,6 +13,15 @@ const GET_USER_BY_ID = `
   }
 `
 
+const GET_USER_BY_SLUG = `
+query MyQuery ($slug: String!) {
+  user(where: {slug: {_eq: $slug}}) {
+    slug
+    rss
+  }
+}
+`
+
 const REGISTER_PODCAST = `
   mutation newPodcast(
     $podcast: newPodcastInput!
@@ -51,14 +60,25 @@ class Server {
 
   getPodcastBySlug = async slug => {
     try {
-      const query = GET_USER_BY_ID;
-      // const variables = {}
-      const response = await this.fetchServer({
+      const query = GET_USER_BY_SLUG;
+      const variables = { slug }
+      const {
+        data,
+        errors
+      } = await this.fetchServer({
         query,
-        // variables,
+        variables,
       });
 
-      return response;
+      if (errors) {
+        throw new Error(errors);
+      }
+
+      if (data.user.length === 0) {
+        throw new Error('User not found');
+      }
+
+      return data.user[0];
     } catch (error) {
       throw error;
     }

@@ -5,13 +5,12 @@ const server = new Server();
 
 class Podcast {
   constructor () {
-    this.data = {}
+    this.response = {}
     this.json = null;
-    this.rss = null;
   }
 
   getJsonRss = async () => {
-    const rss = await server.loadRss(this.rss);
+    const rss = await server.loadRss(this.response.rss);
     const json = xml2json(rss, { compact: true });
     const parsed = JSON.parse(json);
     this.json = parsed.rss.channel;
@@ -19,8 +18,8 @@ class Podcast {
   }
 
   getBySlug = async slug => {
-    this.response = await server.getPodcastBySlug(slug);
-    this.rss = 'https://anchor.fm/s/a392d44/podcast/rss';
+    const response = await server.getPodcastBySlug(slug);
+    this.response = response;
     return this;
   }
 
