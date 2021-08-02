@@ -5,7 +5,7 @@ import CardHome from '../components/CardHome'
 
 const Home = () =>  (
   <>
-    <Header title="Podcastor 🦫" />
+    <Header />
     <Container>
       <Title text="Gererate a website for your podcast with a simple RSS link" />
       <CardHome />

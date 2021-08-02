@@ -1,7 +1,7 @@
 import Link from "next/link"
 import Button from './Button'
 
-const Header = ({ title, image }) => (
+const Header = ({ title = "Podcastor 🦫", image = null }) => (
   <div className="navbar">
     <div className="container">
       <div className="navbar-container">
