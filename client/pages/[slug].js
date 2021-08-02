@@ -11,11 +11,8 @@ const podcast = new Podcast();
 export default function PodcastPage({ slug, json }) {
   const image = json.image.url._text;
   const title = json.title._cdata;
-  const author = json.author._cdata;
   const description = json.description._cdata;
   const episodes = json.item;
-
-  console.log(json)
 
   return (
     <>
@@ -72,15 +69,24 @@ export default function PodcastPage({ slug, json }) {
 }
 
 export async function getServerSideProps({ params: { slug } }) {
-  const {
-    response: {
-      data
-    },
-    getJsonRss
-  } = await podcast.getBySlug('AD');
-  const json = await getJsonRss();
+  try {
+    const {
+      response: {
+        data,
+        errors,
+      },
+      getJsonRss
+    } = await podcast.getBySlug(slug);
+    // const json = await getJsonRss();
 
-  console.log('------------------------------------------', data);
+    console.log('------------------------------------------', data);
+    console.log('------------------------------------------', errors);
 
-  return { props: { slug, json } }
+    return { props: { slug, json } }
+  } catch (error) {
+    console.log(error)
+    return {
+      notFound: true,
+    }
+  }
 }
