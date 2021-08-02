@@ -94,14 +94,12 @@ a {
 }
 
 .footer {
-  width: 100%;
   height: 100px;
-  max-width: 610px;
   border-top: 1px solid #eaeaea;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 auto;
+  margin: 2.1rem;
 }
 
 .footer a {
@@ -174,6 +172,41 @@ a {
   color: #fff;
 }
 
+.card h2 {
+  margin: 0 0 1rem 0;
+  font-size: 1.5rem;
+}
+
+.card p {
+  margin: 0;
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+
+.card-episode audio {
+  width: 100%;
+}
+
+.card-episode-header {
+  display: flex;
+}
+
+.card-episode-header p {
+  font-size: 0.8rem;
+}
+
+.card-episode-metadata {
+  padding-left: 2.1rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-episode-metadata h2 {
+  font-size: 2.1rem;
+}
+
 .input-container {
   font-size: 1.3rem;
   margin: 0.8rem 0;
@@ -198,18 +231,6 @@ a {
   margin: 1.3rem 0;
   border: 1px solid rgb(83, 83, 83);
 }
-
-.card h2 {
-  margin: 0 0 1rem 0;
-  font-size: 1.5rem;
-}
-
-.card p {
-  margin: 0;
-  font-size: 1.25rem;
-  line-height: 1.5;
-}
-
 .logo {
   height: 1em;
   margin-left: 0.5rem;
