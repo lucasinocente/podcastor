@@ -6,7 +6,7 @@ import SubTitle from '../../components/SubTitle';
 import Container from '../../components/Container';
 import Podcast from '../../lib/Podcast';
 
-const podcast = new Podcast();
+const podcastFactory = new Podcast();
 
 export default function PodcastPage({ slug, json }) {
   const image = json.image.url._text;
@@ -68,12 +68,16 @@ export default function PodcastPage({ slug, json }) {
   )
 }
 
-export async function getServerSideProps({ params: { slug } }) {
+export async function getServerSideProps({ params: { podcast } }) {
+  console.log('getServerSideProps', podcast)
+
   try {
-    const { getJsonRss } = await podcast.getBySlug(slug);
+    const { getJsonRss } = await podcastFactory.getBySlug(podcast);
     const json = await getJsonRss();
 
-    return { props: { slug, json } }
+    console.log('json', json)
+
+    return { props: { slug: podcast, json } }
   } catch (error) {
     return {
       notFound: true,
