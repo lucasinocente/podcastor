@@ -1,10 +1,10 @@
 import Link from "next/link";
 import marked from 'marked';
-import Header from "../../../components/Header";
-import Container from "../../../components/Container";
-import Title from "../../../components/Title";
-import Card from "../../../components/Card";
-import SubTitle from "../../../components/SubTitle";
+import Header from "../../../../components/Header";
+import Container from "../../../../components/Container";
+import Title from "../../../../components/Title";
+import Card from "../../../../components/Card";
+import SubTitle from "../../../../components/SubTitle";
 
 const PageList = ({ html }) => {
   return (
