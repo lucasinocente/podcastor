@@ -1,6 +1,7 @@
-const SubTitle = ({ text }) => (
+const SubTitle = ({ text, children }) => (
   <h2 className="subtitle">
     { text }
+    { children }
   </h2>
 )
 
