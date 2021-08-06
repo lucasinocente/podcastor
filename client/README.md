@@ -1,34 +1,38 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Podcastor Client
 
-## Getting Started
+## Instruções
 
-First, run the development server:
-
-```bash
+```
+npm install
 npm run dev
-# or
-yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Prod
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+```
+npm run build
+npm run start
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## Modo Standalone
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Este modo é uma espécie de gambiarra que teremos até sabermos como configurar domínios para paths de nossa aplicação para podermos ter a feature de dominio-do-cliente.com apontar para podcastor.me/slug-do-cliente.
 
-## Learn More
+Para ativá-lo configure as variáveis de ambiente abaixo:
 
-To learn more about Next.js, take a look at the following resources:
+```
+STANDALONE_MODE=true
+STANDALONE_SLUG=slug-do-cliente-no-banco
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+ex:
+STANDALONE_MODE=true
+STANDALONE_SLUG=sabedenada
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Isso irá fazer a home da aplicação agir como se fosse a página de um podcast.
 
-## Deploy on Vercel
+## Variáveis de ambiente
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Para sobrescrever as variáveis do arquivo `.env.development` crie um arquivo `.env.local`.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Para saber mais sobre variáveis de ambiente acesse: https://nextjs.org/docs/basic-features/environment-variables
