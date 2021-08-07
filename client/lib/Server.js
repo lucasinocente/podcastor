@@ -2,17 +2,6 @@ import fetch from 'isomorphic-fetch';
 
 const urlServer = 'http://localhost:8080/v1/graphql'
 
-const GET_USER_BY_ID = `
-  query getUsers {
-    user {
-      id
-      name
-      email
-      rss
-    }
-  }
-`
-
 const GET_USER_BY_SLUG = `
 query MyQuery ($slug: String!) {
   user(where: {slug: {_eq: $slug}}) {
@@ -27,7 +16,9 @@ const REGISTER_PODCAST = `
     $podcast: newPodcastInput!
   ) {
     newPodcast(podcast: $podcast) {
-      status
+      author
+      name
+      email
     }
   }
 `;

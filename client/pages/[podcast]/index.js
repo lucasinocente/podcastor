@@ -69,13 +69,9 @@ export default function PodcastPage({ slug, json }) {
 }
 
 export async function getServerSideProps({ params: { podcast } }) {
-  console.log('getServerSideProps', podcast)
-
   try {
     const { getJsonRss } = await podcastFactory.getBySlug(podcast);
     const json = await getJsonRss();
-
-    console.log('json', json)
 
     return { props: { slug: podcast, json } }
   } catch (error) {

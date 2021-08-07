@@ -10,6 +10,8 @@ input newPodcastInput {
 }
 
 type newPodcastOutput {
-  status : String!
+  author : String!
+  name : String!
+  email : String!
 }
 
