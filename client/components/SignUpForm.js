@@ -7,11 +7,7 @@ const RegisterForm = ({
   setRss,
 }) => {
   const legendSlug = `Your link will be: https://podcastor.me/${slug || 'choice-your-slug'}`
-  const legendRSS = (
-    <>
-      At your anchor account you find at <a href="https://anchor.fm/dashboard/podcast/distribution">https://anchor.fm/dashboard/podcast/distribution</a>
-    </>
-  )
+  const legendRSS = 'At your anchor account you find at https://anchor.fm/dashboard/podcast/distribution'
 
   return (
     <>
