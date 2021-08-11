@@ -13,8 +13,6 @@ const Register = () => {
   const router = useRouter()
   const [slug, setSlug] = useState();
   const [rss, setRss] = useState();
-  const [email, setEmail] = useState();
-  const [name, setName] = useState();
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -25,19 +23,17 @@ const Register = () => {
       } = await podcast.register({
         rss,
         slug,
-        email,
-        name,
       })
 
       if(errors) {
-        throw new Error(errors)
+        throw new Error({ errors })
       }
 
       alert('Sucesso!');
 
       router.push(slug)
     } catch (error) {
-      alert(error)
+      alert(JSON.stringify(error))
     }
   }
 
@@ -45,15 +41,14 @@ const Register = () => {
     <>
       <Header title="Podcastor 🦫" />
       <Container>
-        <Title text="Create your free acount:" />
+        <Title text="Create your acount:" />
         <SubTitle text="Welcome do Podcastor 🦫" />
-        <SubTitle text="Let's create your free account:" />
+        <SubTitle text="Let's create your account:" />
         <RegisterForm
           handleSubmit={handleSubmit}
-          setRss={setRss}
+          slug={slug}
           setSlug={setSlug}
-          setEmail={setEmail}
-          setName={setName}
+          setRss={setRss}
         />
       </Container>
     </>

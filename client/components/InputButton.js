@@ -1,4 +1,4 @@
-const InputText = ({ label, setter, id, placeholder }) => (
+const InputText = ({ label, setter, id, placeholder, legend }) => (
   <div className="input-container">
     <label htmlFor={id}>{label}</label>
     <input
@@ -10,6 +10,9 @@ const InputText = ({ label, setter, id, placeholder }) => (
       placeholder={placeholder}
       required
     />
+    <div className="input-legend">
+      <p>{legend}</p>
+    </div>
   </div>
 )
 

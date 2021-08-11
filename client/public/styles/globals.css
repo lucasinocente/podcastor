@@ -222,6 +222,15 @@ a {
   color: #ddd;
 }
 
+.input-legend {
+  margin: 5px;
+}
+
+.input-legend p {
+  font-size: 15px;
+  font-style: italic;
+}
+
 .spacer {
   margin: 1.1rem 0;
   border: 1px solid rgb(83, 83, 83);
