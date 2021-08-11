@@ -28,25 +28,30 @@ class Server {
     query,
     variables,
   }) {
-    const body = JSON.stringify({ query, variables });
-    const headers = {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-      'x-hasura-admin-secret': 'abc123',
+    try {
+      const body = JSON.stringify({ query, variables });
+      const headers = {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'x-hasura-admin-secret': 'abc123',
+      }
+
+      const response = await fetch(urlServer, {
+        method: 'POST',
+        headers,
+        body
+      });
+
+      if (!response.ok) {
+        throw new Error(response.statusText);
+      }
+
+      const json = response.json();
+      return json;
+    } catch (error) {
+      console.error(error)
+      throw error;
     }
-
-    const response = await fetch(urlServer, {
-      method: 'POST',
-      headers,
-      body
-    });
-
-    if (!response.ok) {
-      throw new Error(response.statusText);
-    }
-
-    const json = response.json();
-    return json;
   }
 
   getPodcastBySlug = async slug => {
@@ -78,8 +83,6 @@ class Server {
   registerPodcast = async ({
     slug,
     rss,
-    email,
-    name,
   }) => {
     try {
       const query = REGISTER_PODCAST;
