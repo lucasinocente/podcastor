@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useRouter } from 'next/router'
-import RegisterForm from '../components/SignUpForm'
+import SignUpForm from '../components/SignUpForm'
 import Header from '../components/Header'
 import Title from '../components/Title'
 import Podcast from '../lib/Podcast'
@@ -44,7 +44,7 @@ const Register = () => {
         <Title text="Create your acount:" />
         <SubTitle text="Welcome do Podcastor 🦫" />
         <SubTitle text="Let's create your account:" />
-        <RegisterForm
+        <SignUpForm
           handleSubmit={handleSubmit}
           slug={slug}
           setSlug={setSlug}
