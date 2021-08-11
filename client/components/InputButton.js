@@ -1,4 +1,4 @@
-const InputText = ({ label, setter, id, placeholder, legend }) => (
+const InputText = ({ label, setter, id, placeholder, legend, maxLength }) => (
   <div className="input-container">
     <label htmlFor={id}>{label}</label>
     <input
@@ -8,6 +8,7 @@ const InputText = ({ label, setter, id, placeholder, legend }) => (
       name={id}
       id={id}
       placeholder={placeholder}
+      maxLength={maxLength}
       required
     />
     <div className="input-legend">

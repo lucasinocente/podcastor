@@ -74,6 +74,7 @@ a {
   border: 0;
   border-radius: 5px;
   border: 1px solid #0e0f11;
+  cursor: pointer;
 }
 
 .btn-secondary {
@@ -82,6 +83,10 @@ a {
 
 .btn-lg {
   font-size: 1.3rem;
+}
+
+.btn-sm {
+  padding: 5px;
 }
 
 .btn-full {
@@ -231,6 +236,9 @@ a {
   font-style: italic;
 }
 
+.input-legend .btn {
+  margin: 5px;
+}
 .spacer {
   margin: 1.1rem 0;
   border: 1px solid rgb(83, 83, 83);
