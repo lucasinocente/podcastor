@@ -5,18 +5,38 @@ import Header from '../../components/Header'
 import Title from '../../components/Title'
 import Container from '../../components/Container'
 import SubTitle from '../../components/SubTitle'
+import Podcast from '../../lib/Podcast'
 
-const Register = () => {
+const podcast = new Podcast();
+
+const Validate = ({ id }) => {
   const router = useRouter()
   const [validateCode, setValidateCode] = useState();
 
   const handleSubmit = async (event) => {
     event.preventDefault()
 
-    console.log({ validateCode })
-
     try {
+      const response = await podcast.validate({
+        id,
+        validateCode,
+      })
+
+      console.log({
+        id,
+        validateCode,
+      })
+
+      // if(response.errors) {
+      //   throw new Error(JSON.stringify(response.errors))
+      // }
+
+      alert('Apenas passando pra frente como se fosse um sucesso de verdade...');
+
+      router.push('/emv')
     } catch (error) {
+      alert(error)
+      router.push('/emv')
     }
   }
 
@@ -35,4 +55,12 @@ const Register = () => {
   )
 }
 
-export default Register;
+export async function getServerSideProps({ params: { id } }) {
+  return {
+    props: {
+      id
+    }
+  }
+}
+
+export default Validate;
