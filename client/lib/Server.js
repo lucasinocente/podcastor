@@ -1,6 +1,6 @@
 import fetch from 'isomorphic-fetch';
 
-const urlServer = 'http://hasura:8080/v1/graphql'
+const urlServer = 'http://graphql-engine:8080/v1/graphql'
 
 const GET_USER_BY_SLUG = `
 query MyQuery ($slug: String!) {
