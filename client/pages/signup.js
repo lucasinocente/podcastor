@@ -18,31 +18,29 @@ const Register = () => {
     event.preventDefault()
 
     try {
-      const {
-        errors,
-      } = await podcast.register({
+      const response = await podcast.register({
         rss,
         slug,
       })
 
-      if(errors) {
-        throw new Error({ errors })
-      }
+      // if(response.errors) {
+      //   throw new Error(JSON.stringify(response.errors))
+      // }
 
-      alert('Sucesso!');
+      alert('Apenas passando pra frente como se fosse um sucesso de verdade...');
 
-      router.push(slug)
+      router.push('validate/xpto')
     } catch (error) {
-      alert(JSON.stringify(error))
+      alert(error)
     }
   }
 
   return (
     <>
-      <Header title="Podcastor 🦫" />
+      <Header />
       <Container>
-        <Title text="Create your acount:" />
-        <SubTitle text="Welcome do Podcastor 🦫" />
+        <Title text="Create your account" />
+        <SubTitle text="Welcome to Podcastor!" />
         <SubTitle text="Let's create your account:" />
         <SignUpForm
           handleSubmit={handleSubmit}

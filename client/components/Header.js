@@ -1,11 +1,16 @@
 import Link from "next/link"
 import Button from './Button'
 
-const Header = ({ title = "Podcastor 🦫", image = null }) => (
+const Header = ({
+  title = "🦫 Podcastor",
+  linkHome = '/',
+  image = null,
+  showSignUpButton = true
+}) => (
   <div className="navbar">
     <div className="container">
       <div className="navbar-container">
-        <Link href="/">
+        <Link href={linkHome}>
           <a className={`navbar-title ${image ? 'navbar-with-image' : ''}`}>
             {image && (
               <div className="navbar-image">
@@ -18,13 +23,15 @@ const Header = ({ title = "Podcastor 🦫", image = null }) => (
           </a>
         </Link>
         <div className="navbar-right">
-          <Link href="/signup">
-            <a>
-              <Button>
-                Sign Up
-              </Button>
-            </a>
-          </Link>
+          { showSignUpButton && (
+            <Link href="/signup">
+              <a>
+                <Button>
+                  Sign Up
+                </Button>
+              </a>
+            </Link>
+          )}
         </div>
       </div>
     </div>

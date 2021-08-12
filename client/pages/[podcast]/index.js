@@ -19,6 +19,8 @@ export default function PodcastPage({ slug, json }) {
       <Header
         image={image}
         title={title}
+        linkHome={`/${slug}`}
+        showSignUpButton={false}
       />
       <Container>
         <Title text={title} />
