@@ -23,17 +23,15 @@ const Register = () => {
         slug,
       })
 
-      // if(response.errors) {
-      //   throw new Error(JSON.stringify(response.errors))
-      // }
+      if(response.errors) {
+        throw new Error(JSON.stringify(response.errors))
+      }
 
       alert('Apenas passando pra frente como se fosse um sucesso de verdade...');
 
       router.push('validate/xpto')
     } catch (error) {
       alert(error)
-
-      router.push('validate/xpto')
     }
   }
 
