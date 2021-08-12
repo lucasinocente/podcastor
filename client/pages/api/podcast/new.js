@@ -16,20 +16,28 @@ export default async (req, res) => {
     const parsed = JSON.parse(json)
 
     const {
-      author: { _cdata: author },
-      title: { _cdata: name },
+      author: { _cdata: authorRSS },
+      title: { _cdata: nameRSS },
+      'itunes:owner': {
+        'itunes:email': { _text: emailRSS },
+      },
     } = parsed.rss.channel
-    const email = 'test@test.com'
 
-    const response = await server.insertUserOne({
+    const {
+      data: {
+        insert_user_one: {
+          author, name, email
+        }
+      }
+    } = await server.insertUserOne({
       slug,
       rss: link,
-      email,
-      name,
-      author,
+      email: emailRSS,
+      name: nameRSS,
+      author: authorRSS,
     });
 
-    console.log(response)
+    console.log(author, name, email)
 
     res.status(200).json({ author, name, email })
   } catch (error) {
