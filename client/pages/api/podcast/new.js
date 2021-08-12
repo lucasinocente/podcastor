@@ -4,7 +4,6 @@ import Server from '../../../lib/Server'
 const server = new Server()
 
 export default async (req, res) => {
-
   try {
     const {
       rss: link,
@@ -36,8 +35,6 @@ export default async (req, res) => {
       name: nameRSS,
       author: authorRSS,
     });
-
-    console.log(author, name, email)
 
     res.status(200).json({ author, name, email })
   } catch (error) {
