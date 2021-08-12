@@ -18,10 +18,15 @@ const HomePage = () => (
   </>
 )
 
-const Home = ({ standalone, json, slug }) =>  (
+const Home = ({
+  standalone,
+  standaloneStatic,
+  json,
+  slug
+}) =>  (
   <>
     {
-      standalone
+      standalone || standaloneStatic
         ? <PodcastPage
             json={json}
             slug={slug}
@@ -32,12 +37,36 @@ const Home = ({ standalone, json, slug }) =>  (
 )
 
 export async function getServerSideProps() {
-  const { standalone, slug } = config;
+  const {
+    standalone,
+    standaloneStatic,
+    slug,
+    rssLink
+  } = config;
 
-  if(!standalone) {
+  if(!standalone && !standaloneStatic) {
     return {
       props: {
         standalone: false,
+      }
+    }
+  }
+
+  if(standaloneStatic) {
+    try {
+      const json = await podcastFactory.getJsonFromRssLink(rssLink);
+
+      return {
+        props: {
+          standaloneStatic,
+          slug,
+          json
+        }
+      }
+    } catch (error) {
+      console.log(error)
+      return {
+        notFound: true,
       }
     }
   }

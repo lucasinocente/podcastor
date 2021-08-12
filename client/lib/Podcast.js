@@ -9,11 +9,27 @@ class Podcast {
     this.json = null;
   }
 
+  loadRssFromServer = async (rssLink) => {
+    try {
+      const rss = await server.loadRss(rssLink);
+      const json = xml2json(rss, { compact: true });
+      const parsed = JSON.parse(json);
+
+      return parsed.rss.channel;
+    } catch (error) {
+      throw new Error(error);
+    }
+  }
+
   getJsonRss = async () => {
-    const rss = await server.loadRss(this.response.rss);
-    const json = xml2json(rss, { compact: true });
-    const parsed = JSON.parse(json);
-    this.json = parsed.rss.channel;
+    const json = await this.loadRssFromServer(this.response.rss);
+    this.json = json;
+    return this.json
+  }
+
+  getJsonFromRssLink = async (rssLink) => {
+    const json = await this.loadRssFromServer(rssLink);
+    this.json = json;
     return this.json
   }
 
