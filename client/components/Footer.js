@@ -2,7 +2,7 @@ import Link from "next/link"
 
 const Footer = () => (
   <footer className="footer">
-    <Link href="/">
+    <Link href="https://podcastor.me">
       <a>
         Powered by{' '}
         <strong>Podcastor 🦫</strong>
