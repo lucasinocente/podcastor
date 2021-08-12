@@ -12,7 +12,8 @@ const HomePage = () => (
   <>
     <Header />
     <Container>
-      <Title text="Gererate a website for your podcast with a simple RSS link" />
+      {/* <Title text="Gererate a website for your podcast with a simple RSS link" /> */}
+      <Title text="Gere um site para o seu podcast apenas com o link do seu RSS!" />
       <CardHome />
     </Container>
   </>
