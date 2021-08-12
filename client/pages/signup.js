@@ -32,6 +32,8 @@ const Register = () => {
       router.push('validate/xpto')
     } catch (error) {
       alert(error)
+
+      router.push('validate/xpto')
     }
   }
 
