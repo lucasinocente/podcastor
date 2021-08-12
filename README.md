@@ -22,7 +22,7 @@ nano /etc/hosts
 No arquivo, adicione a linha:
 
 ```
-graphql-engine  localhost
+127.0.0.1       graphql-engine
 ```
 
 ## Docker Compose
