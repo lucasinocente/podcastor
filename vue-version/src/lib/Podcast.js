@@ -17,6 +17,7 @@ class Podcast {
     await this.loadRssContent();
     this.buildMetadata();
     this.buildEpisodes();
+    console.log(JSON.stringify(this.episodes))
   }
 
   buildMetadata() {

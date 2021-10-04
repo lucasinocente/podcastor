@@ -29,12 +29,13 @@ export default {
     creator: String,
     pubDate: String,
     audio: String,
-    descriptionHtml: HTMLElement,
+    descriptionHtml: String,
   }
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import '../assets/styles/global.scss';
 
 .title a {
   color: #0070f3;

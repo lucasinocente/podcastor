@@ -12,7 +12,9 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import '../assets/styles/global.scss';
+
 .footer {
   height: 100px;
   border-top: 1px solid #eaeaea;
@@ -20,6 +22,8 @@ export default {
   justify-content: center;
   align-items: center;
   margin: 2.1rem;
+  background: #22272e;
+  color: #ddd;
 }
 
 .footer a {

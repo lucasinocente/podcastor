@@ -11,7 +11,9 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import '../assets/styles/global.scss';
+
 h1 {
   margin: 2.1rem;
   font-size: 3.4rem;

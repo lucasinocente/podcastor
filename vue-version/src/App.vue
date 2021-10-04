@@ -43,41 +43,12 @@ export default {
     await Podcast.init();
     this.episodes = Podcast.getEpisodes();
     this.metadata = Podcast.getMetadata();
+    console.log({ episodes: this.episodes })
     this.isLoading = false;
   },
 }
 </script>
 
-<style>
-html,
-body {
-  padding: 0;
-  margin: 0;
-  background: #22272e;
-  color: #ddd;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
-
-body {
-  padding-top: 77px;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-ul {
-  padding: 0;
-  margin: 0;
-}
-
-li {
-  list-style: none;
-}
+<style lang="scss">
+@import './assets/styles/global';
 </style>

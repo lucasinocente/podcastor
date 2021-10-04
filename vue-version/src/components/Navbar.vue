@@ -25,7 +25,8 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import '../assets/styles/global.scss';
 
 .navbar {
   background: #2d333b;
