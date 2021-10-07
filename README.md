@@ -1,34 +1,24 @@
-# 🦫 Podcastor
+# Podcastor (WIP)
 
-Este repositório é um monorepositório das aplicações necessárias para o nosso querido 🦫 Podcastor :)
-
-Dentro de cada aplicação estão as suas respectivas documentações e instruções de uso.
-
-## Aplicações
-
-- Client /client
-- Hasura /hasura-server
-
-## Configurações
-
-Para rodar corretamente o projeto localmente, você irá precisar apontar o serviço do Hasura criado pelo Docker para o seu localhost.
-
-Abra o arquivo `/etc/hosts` em modo sudo:
-
+## Project setup
 ```
-nano /etc/hosts
+npm install
 ```
 
-No arquivo, adicione a linha:
-
+### Compiles and hot-reloads for development
 ```
-127.0.0.1       graphql-engine
+npm run serve
 ```
 
-## Docker Compose
-
-Para desenvolvimento, utilize o docker-compose
-
+### Compiles and minifies for production
 ```
-docker-compose up
+npm run build
 ```
+
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
