@@ -1,22 +1,22 @@
 <template>
   <div class="bar">
-    <img :src="episode.image" height="89" />
+    <img :src="nowPlaying.image" height="89" />
     <div class="metadata">
-      <h2>{{ episode.title }}</h2>
-      <audio controls :autoplay="episode.autoplay" :key="episode.audio">
-        <source :src="episode.audio" type="audio/x-m4a" />
+      <h2>{{ nowPlaying.title }}</h2>
+      <audio controls :autoplay="autoplay" :key="nowPlaying.audio">
+        <source :src="nowPlaying.audio" type="audio/x-m4a" />
       </audio>
     </div>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
   name: 'NowPlaying',
   computed: {
-    episode() {
-      return this.$store.state.nowPlaying;
-    }
+    ...mapState(['autoplay', 'nowPlaying'])
   }
 }
 </script>

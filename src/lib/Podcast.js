@@ -13,24 +13,6 @@ class Podcast {
     this.episodes = [{}]
   }
 
-  async init() {
-    await this.loadRssContent();
-    this.buildMetadata();
-    this.buildEpisodes();
-  }
-
-  buildMetadata() {
-    this.metadata.imageUrl = this.jsonContent.image.url._text;
-    this.metadata.title = this.jsonContent.title._cdata;
-    this.metadata.description = this.jsonContent.description._cdata;
-  }
-
-  buildEpisodes() {
-    this.episodes = this.jsonContent.item.map(
-      episode => new PodcastEpisode(episode)
-    )
-  }
-
   getMetadata() {
     return this.metadata;
   }
@@ -54,6 +36,35 @@ class Podcast {
     } catch (error) {
       throw new Error(error);
     }
+  }
+
+  buildMetadata() {
+    this.metadata.imageUrl = this.jsonContent.image.url._text;
+    this.metadata.title = this.jsonContent.title._cdata;
+    this.metadata.description = this.jsonContent.description._cdata;
+  }
+
+  buildEpisode(payload) {
+    return new PodcastEpisode({
+      title: payload.title._cdata,
+      pubDate: payload.pubDate._text,
+      creator: payload['dc:creator']._cdata,
+      audio: payload.enclosure._attributes.url,
+      image: payload['itunes:image']._attributes.href,
+      descriptionHtml: payload['itunes:summary']._text,
+    });
+  }
+
+  buildEpisodeList() {
+    this.episodes = this.jsonContent.item.map(
+      episode => this.buildEpisode(episode)
+    )
+  }
+
+  async init() {
+    await this.loadRssContent();
+    this.buildMetadata();
+    this.buildEpisodeList();
   }
 }
 

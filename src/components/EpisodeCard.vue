@@ -2,42 +2,33 @@
   <div class="card">
     <div class="card-episode-header">
       <div>
-        <img :src="image" height="144" />
+        <img :src="episode.image" height="144" />
       </div>
       <div class="card-episode-metadata">
         <div>
-          <h2>{{ title }}</h2>
-          <p><strong>{{ creator }}</strong> - {{ pubDate }}</p>
+          <h2>{{ episode.title }}</h2>
+          <p><strong>{{ episode.creator }}</strong> - {{ episode.pubDate }}</p>
         </div>
-        <button @click="updateNowPlaying">Ouvir episódio</button>
+        <button @click="playEpisode(episode)">Ouvir episódio</button>
       </div>
     </div>
     <hr class="spacer" />
     <h3>Description:</h3>
-    <div v-html="descriptionHtml" />
+    <div v-html="episode.descriptionHtml" />
   </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+import PodcastEpisode from '../lib/PodcastEpisode';
+
 export default {
   name: 'EpisodeCard',
   props: {
-    image: String,
-    title: String,
-    creator: String,
-    pubDate: String,
-    audio: String,
-    descriptionHtml: String,
+    episode: PodcastEpisode,
   },
   methods: {
-    updateNowPlaying() {
-      return this.$store.commit('updateNowPlaying', {
-        autoplay: true,
-        image: this.image,
-        audio: this.audio,
-        title: this.title,
-      })
-    }
+    ...mapActions(['playEpisode'])
   }
 }
 </script>
@@ -45,29 +36,9 @@ export default {
 <style lang="scss" scoped>
 @import '../assets/styles/global.scss';
 
-.title a {
-  color: #0070f3;
-  text-decoration: none;
-}
-
-.title a:hover,
-.title a:focus,
-.title a:active {
-  text-decoration: underline;
-}
-
 .description {
   line-height: 1.5;
   font-size: 1.5rem;
-}
-
-.code {
-  background: #fafafa;
-  border-radius: 5px;
-  padding: 0.75rem;
-  font-size: 1.1rem;
-  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-    Bitstream Vera Sans Mono, Courier New, monospace;
 }
 
 .card {
@@ -95,10 +66,6 @@ export default {
 
 .card .btn {
   margin-bottom: 1.1rem;
-}
-
-.card-episode audio {
-  width: 100%;
 }
 
 .card-episode-header {

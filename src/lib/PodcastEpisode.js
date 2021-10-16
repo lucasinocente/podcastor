@@ -1,11 +1,11 @@
 class PodcastEpisode {
   constructor(data) {
-    this.title = data.title._cdata;
-    this.pubDate = data.pubDate._text;
-    this.creator = data['dc:creator']._cdata;
-    this.audio = data.enclosure._attributes.url;
-    this.image = data['itunes:image']._attributes.href;
-    this.descriptionHtml = data['itunes:summary']._text;
+    this.title = data.title;
+    this.pubDate = data.pubDate;
+    this.creator = data.creator;
+    this.audio = data.audio;
+    this.image = data.image;
+    this.descriptionHtml = data.descriptionHtml;
   }
 }
 

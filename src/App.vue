@@ -7,11 +7,7 @@
     />
     <sub-title text="Episódios:" />
     <episode-list :episodes="episodes" />
-    <now-playing
-      :image="episodes[0].image"
-      :title="episodes[0].title"
-      :audio="episodes[0].audio"
-    />
+    <now-playing />
     <footer-sign />
   </div>
 </template>
