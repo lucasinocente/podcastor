@@ -1,23 +1,28 @@
 <template>
   <div v-if="!isLoading">
-    <navbar
-      :title="metadata.title"
+    <page-title
       :imageUrl="metadata.imageUrl"
+      :title="metadata.title"
+      :description="metadata.description"
     />
-    <page-title :text="metadata.title" />
-    <sub-title :text="metadata.description" />
-    <sub-title text="Episodes:" />
+    <sub-title text="Episódios:" />
     <episode-list :episodes="episodes" />
+    <now-playing
+      :image="episodes[0].image"
+      :title="episodes[0].title"
+      :audio="episodes[0].audio"
+    />
     <footer-sign />
   </div>
 </template>
 
 <script>
-import Navbar from './components/Navbar'
 import PageTitle from './components/PageTitle'
 import SubTitle from './components/SubTitle'
 import EpisodeList from './components/EpisodeList'
 import FooterSign from './components/Footer'
+import NowPlaying from './components/NowPlaying'
+
 import PodcastFactory from './lib/Podcast'
 
 const rssLink = 'https://anchor.fm/s/a392d44/podcast/rss';
@@ -25,7 +30,7 @@ const Podcast = new PodcastFactory(rssLink);
 
 export default {
   name: 'Podcastor',
-  components: { Navbar, PageTitle, SubTitle , EpisodeList, FooterSign },
+  components: { PageTitle, SubTitle , EpisodeList, NowPlaying, FooterSign },
 
   data() {
     return {
@@ -43,8 +48,8 @@ export default {
     await Podcast.init();
     this.episodes = Podcast.getEpisodes();
     this.metadata = Podcast.getMetadata();
-    console.log({ episodes: this.episodes })
     this.isLoading = false;
+    this.$store.commit('updateNowPlaying', this.episodes[0]);
   },
 }
 </script>

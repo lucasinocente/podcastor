@@ -9,9 +9,7 @@
           <h2>{{ title }}</h2>
           <p><strong>{{ creator }}</strong> - {{ pubDate }}</p>
         </div>
-        <audio controls>
-          <source :src="audio" type="audio/x-m4a" />
-        </audio>
+        <button @click="updateNowPlaying">Ouvir episódio</button>
       </div>
     </div>
     <hr class="spacer" />
@@ -30,6 +28,16 @@ export default {
     pubDate: String,
     audio: String,
     descriptionHtml: String,
+  },
+  methods: {
+    updateNowPlaying() {
+      return this.$store.commit('updateNowPlaying', {
+        autoplay: true,
+        image: this.image,
+        audio: this.audio,
+        title: this.title,
+      })
+    }
   }
 }
 </script>
@@ -103,10 +111,12 @@ export default {
 
 .card-episode-metadata {
   padding-left: 2.1rem;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+
+  button {
+    color: black;
+    cursor: pointer;
+    padding: 5px 8px;
+  }
 }
 
 .card-episode-metadata h2 {
