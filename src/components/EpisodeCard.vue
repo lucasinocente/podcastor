@@ -1,20 +1,34 @@
 <template>
   <div class="card">
-    <div class="card-episode-header">
+    <div class="cover">
+      <img
+         @click="playEpisode(episode)"
+         :src="episode.image"
+         height="144"
+         :alt="episode.title"
+         :title="episode.title"
+      />
+    </div>
+    <div class="content">
       <div>
-        <img :src="episode.image" height="144" />
-      </div>
-      <div class="card-episode-metadata">
-        <div>
-          <h2>{{ episode.title }}</h2>
-          <p><strong>{{ episode.creator }}</strong> - {{ episode.pubDate }}</p>
+        <h2>{{ episode.title }}</h2>
+        <div class="author">
+          <p><strong>{{ episode.creator }}</strong></p>
         </div>
-        <button @click="playEpisode(episode)">Ouvir episódio</button>
+        <p>
+          <span
+            class="btn"
+            @click="playEpisode(episode)"
+            :title="episode.title"
+          >
+            Ouvir episódio</span>
+          ({{ duration }}) - {{ pubDate }}
+        </p>
+        <div class="description">
+          <div v-html="episode.descriptionHtml" />
+        </div>
       </div>
     </div>
-    <hr class="spacer" />
-    <h3>Description:</h3>
-    <div v-html="episode.descriptionHtml" />
   </div>
 </template>
 
@@ -29,65 +43,69 @@ export default {
   },
   methods: {
     ...mapActions(['playEpisode'])
+  },
+  computed: {
+    pubDate: function() {
+      const now = new Date();
+      const yearNow = now.getFullYear();
+      const date = new Date(this.episode.pubDate);
+      const day = date.getDate();
+      const month = this.episode.pubDate.split(' ')[2];
+      const year = date.getFullYear();
+
+      return `${month} ${day} ${year !== yearNow ? year : ''}`;
+    },
+    duration: function() {
+      const value =  parseInt(this.episode.duration / 60, 10);
+      return `${value}min`
+    }
   }
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import '../assets/styles/global.scss';
 
-.description {
-  line-height: 1.5;
-  font-size: 1.5rem;
-}
-
 .card {
-  margin: 2.1rem;
-  padding: 2.1rem 2.1rem 1.1rem;
-  text-align: left;
-  color: inherit;
-  text-decoration: none;
-  border: 1px solid #eaeaea;
-  border-radius: 8px;
-  background: #2d333b;
-  color: #fff;
-}
-
-.card h2 {
-  margin: 0 0 1rem 0;
-  font-size: 1.5rem;
-}
-
-.card p {
-  margin: 0 0 1rem 0;
-  font-size: 1.25rem;
-  line-height: 1.5;
-}
-
-.card .btn {
-  margin-bottom: 1.1rem;
-}
-
-.card-episode-header {
+  margin: 2.1rem 0;
   display: flex;
 }
 
-.card-episode-header p {
-  font-size: 0.8rem;
+.cover img {
+  cursor: pointer;
 }
 
-.card-episode-metadata {
-  padding-left: 2.1rem;
+.content {
+  padding-left: 1rem;
 
-  button {
-    color: black;
-    cursor: pointer;
-    padding: 5px 8px;
+  h2 {
+    font-size: 1.21rem;
+    margin: 0;
   }
-}
 
-.card-episode-metadata h2 {
-  font-size: 2.1rem;
+  .btn {
+    color: black;
+    background: white;
+    margin: 3px;
+    padding: 8px;
+    font-size: 0.8rem;
+    border-radius: 2px;
+    cursor: pointer;
+  }
+
+  .author p {
+    margin: 0;
+    font-size: 0.8rem;
+  }
+
+  .description {
+    p {
+      margin: 0.5rem 0;
+    }
+    a {
+      text-decoration: underline;
+    }
+  }
 }
 
 </style>

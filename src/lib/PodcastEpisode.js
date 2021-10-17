@@ -6,6 +6,7 @@ class PodcastEpisode {
     this.audio = data.audio;
     this.image = data.image;
     this.descriptionHtml = data.descriptionHtml;
+    this.duration = data.duration;
   }
 }
 

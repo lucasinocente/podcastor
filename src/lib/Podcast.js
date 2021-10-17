@@ -52,6 +52,7 @@ class Podcast {
       audio: payload.enclosure._attributes.url,
       image: payload['itunes:image']._attributes.href,
       descriptionHtml: payload['itunes:summary']._text,
+      duration: payload['itunes:duration']._text,
     });
   }
 

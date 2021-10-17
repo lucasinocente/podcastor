@@ -1,8 +1,15 @@
 <template>
-  <div class="header">
-    <img :src="imageUrl" height="144" />
-    <h1>{{title}}</h1>
-    <h2>{{description}}</h2>
+  <div class="metadata">
+    <img :src="imageUrl" height="233" />
+    <div class="text">
+      <h1>{{title}}</h1>
+      <div class="credits">
+        <p>Powered by <a href="https://podcastor.me">Podcastor 🦥</a></p>
+      </div>
+      <div class="description">
+        <p>{{description}}</p>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -20,20 +27,32 @@ export default {
 <style lang="scss" scoped>
 @import '../assets/styles/global.scss';
 
-.header {
-  padding: 2.1rem;
-  text-align: center;
-
-  h1 {
-    font-size: 3.4rem;
-  }
-
-  h2 {
-    font-weight: normal;
-  }
+.metadata {
+  margin: 2.1rem;
+  display: flex;
 
   img {
-    border: 8px solid #f3f3f3;
+    border: 2px solid #f3f3f3;
+    border-radius: 2px;
+  }
+
+  .text {
+    padding: 1.3rem 0 0 2.1rem;
+
+    h1 {
+      font-size: 2.1rem;
+      margin: 0;
+    }
+
+    .credits p {
+      font-size: 0.8rem;
+    }
+
+    .description p {
+      font-size: 1rem;
+      line-height: 1.3;
+      margin-bottom: 0;
+    }
   }
 }
 </style>
