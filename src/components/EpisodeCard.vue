@@ -69,14 +69,30 @@ export default {
 .card {
   margin: 2.1rem 0;
   display: flex;
+
+  @media (max-width: 600px) {
+    display: block;
+    padding-bottom: 21px;
+    border-bottom: 1px solid #555555;
+  }
 }
 
 .cover img {
   cursor: pointer;
+
+  @media (max-width: 600px) {
+    max-width: 244px;
+    height: auto;
+  }
 }
 
 .content {
   padding-left: 1rem;
+
+  @media (max-width: 600px) {
+    padding-left: 0;
+    margin-top: 21px;
+  }
 
   h2 {
     font-size: 1.21rem;

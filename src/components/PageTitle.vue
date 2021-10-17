@@ -31,6 +31,10 @@ export default {
   margin: 2.1rem;
   display: flex;
 
+  @media (max-width: 600px) {
+    display: block;
+  }
+
   img {
     border: 2px solid #f3f3f3;
     border-radius: 2px;
@@ -39,9 +43,17 @@ export default {
   .text {
     padding: 1.3rem 0 0 2.1rem;
 
+    @media (max-width: 600px) {
+      padding: 0;
+    }
+
     h1 {
       font-size: 2.1rem;
       margin: 0;
+
+      @media (max-width: 600px) {
+        margin-top: 21px;
+      }
     }
 
     .credits p {

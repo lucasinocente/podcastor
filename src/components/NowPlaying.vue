@@ -51,6 +51,14 @@ export default {
 
   h2 {
     margin: 3px 13px 0 0;
+
+    @media (max-width: 600px) {
+      font-size: 1.3rem;
+    }
+  }
+
+  audio {
+    height: 38px;
   }
 
   p {
