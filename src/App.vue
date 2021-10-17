@@ -21,7 +21,7 @@ import NowPlaying from './components/NowPlaying'
 
 import PodcastFactory from './lib/Podcast'
 
-const rssLink = 'https://anchor.fm/s/a392d44/podcast/rss';
+const rssLink = process.env.VUE_APP_RSS_LINK;
 const Podcast = new PodcastFactory(rssLink);
 
 export default {
@@ -30,12 +30,8 @@ export default {
 
   data() {
     return {
-      metadata: {
-        title: null,
-        imageUrl: null,
-        description: null,
-      },
-      episodes: [{}],
+      metadata: Podcast.metadata,
+      episodes: Podcast.episodes,
       isLoading: true,
     }
   },
